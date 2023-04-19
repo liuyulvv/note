@@ -13,7 +13,6 @@ repo_url: https://github.com/liuyulvv/note
 
 theme:
   name: material
-  language: zh
   logo: assets/avatar.png
   favicon: assets/avatar.png
   icon:
@@ -25,14 +24,14 @@ theme:
       accent: teal
       toggle:
         icon: material/brightness-7
-        name: 深色
+        name: Dark
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
       accent: teal
       toggle:
         icon: material/brightness-4
-        name: 浅色
+        name: bright
   features:
     - navigation.tracking
     - navigation.tabs

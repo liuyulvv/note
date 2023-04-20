@@ -8,9 +8,6 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/liuyulvv
 
-repo_name: liuyulvv/note
-repo_url: https://github.com/liuyulvv/note
-
 theme:
   name: material
   logo: assets/avatar.png
@@ -33,9 +30,6 @@ theme:
         icon: material/brightness-4
         name: bright
   features:
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.footer
     - content.code.copy
     - search.highlight
 

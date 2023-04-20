@@ -1,3 +1,5 @@
 nav:
+  - C++:
+    - string_view.md
   - Vulkan:
     - Vulkan with Qt as GUI.md

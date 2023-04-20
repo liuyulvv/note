@@ -39,7 +39,7 @@ public:
 }；
 ```
 
-Firstly, we make `OurWindow` inherit from `QWindow` like `QVulkanWindow`, add a member method `getSurfaceInfo`, return `VkWin32SurfaceCreateInfoKHR`. To enable compile your code you have to define `VK_USE_PLATFORM_WIN32_KHR`.
+Firstly, we make `OurWindow` inherit from `QWindow` like `QVulkanWindow`, add a member function `getSurfaceInfo`, return `VkWin32SurfaceCreateInfoKHR`. To enable compile your code you have to define `VK_USE_PLATFORM_WIN32_KHR`.
 
 ```cpp
 #if defined(_WIN32)

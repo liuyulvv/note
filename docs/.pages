@@ -4,3 +4,5 @@ nav:
     - inline.md
   - Vulkan:
     - Vulkan with Qt as GUI.md
+  - Tips:
+    - tips.md

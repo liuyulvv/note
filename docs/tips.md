@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Tips
 
 - Qt save `*.ui` files in a different path(`ui`) with `src`, to make this you should update `CMakeLists.txt` with:

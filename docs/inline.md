@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # inline
 
 `inline` is usually used in `class member function` like this:

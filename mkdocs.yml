@@ -10,6 +10,7 @@ extra:
 
 theme:
   name: material
+  custom_dir: docs/overrides
   logo: assets/avatar.png
   favicon: assets/avatar.png
   icon:

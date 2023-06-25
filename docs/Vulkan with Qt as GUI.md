@@ -30,36 +30,38 @@ But this is not accord with my need, because I have spent much time in these ted
 #if !defined(VK_USE_PLATFORM_WIN32_KHR)
 #define VK_USE_PLATFORM_WIN32_KHR
 #endif  // VK_USE_PLATFORM_WIN32_KHR
-#include "vulkan/vulkan.h"
+#include "vulkan/vulkan.hpp"
 
 class OurWindow : public QWindow {
 public:
-    OurWindow() = default;
-    VkWin32SurfaceCreateInfoKHR getSurfaceInfo();
+    OurWindow();
+    vk::Win32SurfaceCreateInfoKHR getSurfaceInfo();
 }；
 ```
 
 Firstly, we make `OurWindow` inherit from `QWindow` like `QVulkanWindow`, add a member function `getSurfaceInfo`, return `VkWin32SurfaceCreateInfoKHR`. To enable compile your code you have to define `VK_USE_PLATFORM_WIN32_KHR`.
 
 ```cpp
+OurWindow::OurWindow() {
+	setSurfaceType(QSurface::VulkanSurface);
+}
+
 #if defined(_WIN32)
-VkWin32SurfaceCreateInfoKHR OurWindow::getSurfaceInfo() {
+vk::Win32SurfaceCreateInfoKHR OurWindow::getSurfaceInfo() {
     auto wid = winId();
-    auto* platformInterface = QGuiApplication::platformNativeInterface();
-    auto* handle = platformInterface->nativeResourceForWindow("handle", this);
-    auto* hwnd = static_cast<HWND>(handle);
-    VkWin32SurfaceCreateInfoKHR surfaceInfo{};
-    surfaceInfo.hwnd(hwnd);
-    surfaceInfo.hinstance(GetModuleHandle(nullptr));
+    vk::Win32SurfaceCreateInfoKHR surfaceInfo{};
+    surfaceInfo.setHwnd(reinterpret_cast<HWND>(wid));
+    surfaceInfo.setHinstance(GetModuleHandle(nullptr));
     return surfaceInfo;
 }
 #endif
-```
 
-In `getSurfaceInfo`，we get the `hwnd` of  `OurWindow`, we need to use `hwnd` to make `VkSurfaceKHR` in `vkCreateWin32SurfaceKHR` .
-
-```cpp
-vkCreateWin32SurfaceKHR(instance, &surfaceInfo, nullptr, &surface)
+// create surface
+m_instance.createWin32SurfaceKHR(surfaceInfo);
 ```
 
 To be continued.
+
+> Reference: 
+>
+> - [Qt Vulkan in MacOS](https://www.qt.io/blog/2018/05/30/vulkan-for-qt-on-macos)
